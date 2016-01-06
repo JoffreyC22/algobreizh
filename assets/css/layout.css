@@ -1,9 +1,11 @@
 body{
     font-family: 'Montserrat', sans-serif;
+    background: url('../img/background.jpg') fixed center;
+    background-size: 100%
 }
 .navbar-default{
     border: none !important;
-    background-color: #fff !important; 
+    background-color: transparent !important; 
 }
 /********      COLORS        ******/
 .green{

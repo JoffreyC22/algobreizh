@@ -5,14 +5,14 @@
         <div class="col-lg-12">
             <div class="col-lg-8">
                 <div id="produit" class="content">
-                    <img class='img-responsive' src="assets/img/Produits/DSC_9676.PNG" alt="produits">
+                    <img class='img-responsive' src="tools/thumbnailer.php?src=../assets/img/Produits/seaweed-products.jpg&w=300&h=125&method=scale-min" alt="produits">
                     <h2 class="text-center">Produits</h2>
                 </div>
             </div>
             <div class="col-lg-4 items">
                 <div  class="col-lg-12 no-padding" >
                     <div id="panier"class="content">
-                        <img class="center-block" src="assets/img/shopping232.png">
+                        <img class="center-block img-responsive" src="assets/img/shopping232.png">
                         <h2>Panier <span class="pull-right">5</span></h2>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
     </div>
     <script type="text/javascript">
     $(document).ready(function(){
-        var heightItems = $('.items').height();
+        var heightItems = $('.items').height() -9;
         $('#produit').attr('style', 'height:'+heightItems+'px');
     })
     </script>
