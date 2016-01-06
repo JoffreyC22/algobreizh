@@ -8,6 +8,7 @@
 .content p, h2
 {
     color: #fff;
+    text-transform: uppercase;
 }
 /*******          Produits          ********/
 #produit{
@@ -20,7 +21,7 @@
 #panier h2 {
     color: #fff;
     margin-top: 15px;
-    font-size: 15px;
+    font-size: 13px;
 }
 /*******          Contact          ********/
 #contact{
@@ -29,14 +30,16 @@
 #contact h2 {
     color: #fff;
     margin-top: 15px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 /*******          Facture          ********/
 #facture{
     background-color: #ff8f00;
+    padding-bottom: 24px;
 }
 /*******          Commande        ********/
 #commande{
     background-color: #c62828;
+    padding-bottom: 24px;
 }
