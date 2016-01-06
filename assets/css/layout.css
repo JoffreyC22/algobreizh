@@ -23,4 +23,6 @@ body{
 .logOut img {
     width: 35px;
 }
-
+.no-padding{
+    padding: 0;
+}
