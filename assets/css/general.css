@@ -1,7 +1,46 @@
+/********      Large format        ******/
+@media screen and (max-width: 1200px ) {
+    .no-padding-rigth{
+        padding-right: 0px;
+    }
+
+    #produit{
+        height: auto !important;
+    }
+}
+
+/********      Moyen format        ******/
+@media screen and (min-width: 992px ) and (max-width: 1200px) {
+    .no-padding-rigth{
+        padding-right: 0px;
+    }
+}
+
+/********      Petit format       ******/
+@media screen and (min-width: 786px ) and (max-width: 992px) {
+    .no-padding-rigth{
+        padding-right: 0px;
+    }
+}
+
+/********      Très petit format       ******/
+@media screen and (max-width: 768px ) {
+    .no-padding-rigth{
+        padding-right: 0px;
+    }
+
+    #facture h2 {
+        font-size: 20px;
+    }
+    #commande h2{
+        font-size: 20px;
+    }
+}
+
 /*******          ALL          ********/
 .content{
     padding: 25px 25px 5px 25px;
-    margin-top: 10px;
+    margin: 5px;
     overflow: auto;
     -webkit-transition:  1s; /* Safari */
     transition:  1s;
@@ -24,6 +63,7 @@
 /*******          Produits          ********/
 #produit{
     background-color: #00695c;
+    height: 404px;
 }
 
 #produit img{

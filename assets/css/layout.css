@@ -1,8 +1,7 @@
 body{
     font-family: 'Montserrat', sans-serif;
-    background: url('../img/background.jpg') fixed center;
+    background: url('../img/background.jpg') fixed center no-repeat;
     background-size: cover;
-    background-repeat: no-repeat;
 }
 a:hover{
     color:#fff;
@@ -32,7 +31,4 @@ a:hover{
 }
 .no-padding{
     padding: 0px;
-}
-.no-padding-rigth{
-    padding-right: 0px;
 }
