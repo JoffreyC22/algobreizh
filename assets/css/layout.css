@@ -1,0 +1,44 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.navbar-default{
+    border: none !important;
+    background-color: #fff !important; 
+}
+/********      COLORS        ******/
+.green{
+    color: #004d40;
+}
+
+/*******          Layout          ********/
+.header{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.customer{
+    line-height: 69px;
+    font-size: 18px;
+    padding-right: 19px;
+}
+.logOut img {
+    width: 35px;
+}
+
+/*******          ALL          ********/
+.content{
+    padding: 50px 50px 50px 50px;
+}
+/*******          Produits          ********/
+#produit{
+    background-color: #00695c;
+}
+/*******          Panier          ********/
+#panier{
+    background-color: #283593;
+}
+/*******          Contact          ********/
+#contact{
+    background-color: #6a1b9a;
+}
+/*******          Facture          ********/
+/*******          Commande        ********/
