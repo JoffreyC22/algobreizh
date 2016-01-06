@@ -1,0 +1,18 @@
+/*******          ALL          ********/
+.content{
+    padding: 50px 50px 50px 50px;
+}
+/*******          Produits          ********/
+#produit{
+    background-color: #00695c;
+}
+/*******          Panier          ********/
+#panier{
+    background-color: #283593;
+}
+/*******          Contact          ********/
+#contact{
+    background-color: #6a1b9a;
+}
+/*******          Facture          ********/
+/*******          Commande        ********/
