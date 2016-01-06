@@ -3,6 +3,13 @@
     padding: 25px 25px 5px 25px;
     margin-top: 10px;
     overflow: auto;
+    -webkit-transition:  1s; /* Safari */
+    transition:  1s;
+}
+.content:hover{
+    transform: scale(1.05);
+    -webkit-transition:  1s; /* Safari */
+    transition:  1s;
 }
 
 .content p, h2
