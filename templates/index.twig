@@ -1,19 +1,29 @@
 
 {% extends "layout.twig" %}
 {% block content %}
-        <div class="container">
-            <div id="produit" class="col-lg-8" >
-                <div class="content"></div>
+    <div class="container">
+        <div class="col-lg-12">
+            <div class="col-lg-8" >
+                <div   id="produit" class="content"></div>
             </div>
             <div class="col-lg-4">
-                <div id="panier" class="col-lg-12" >
-                    <div class="content"></div>
+                <div  class="col-lg-12 no-padding" >
+                    <div id="panier"class="content"></div>
                 </div>
-                <div id="contact" class="col-lg-12" >
-                    <div class="content"></div>
+                <div class="col-lg-12 no-padding" >
+                    <div id="contact"  class="content"></div>
                 </div>
             </div>
         </div>
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+                <div id="facture" class="content"></div>
+            </div> 
+            <div class="col-lg-6">
+                <div id="commande" class="content"></div>
+            </div>  
+        </div>
+    </div>
 {% endblock %}
 {% block footer %}
 {% endblock %}
