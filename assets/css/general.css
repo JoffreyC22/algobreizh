@@ -5,11 +5,15 @@
     overflow: auto;
     -webkit-transition:  1s; /* Safari */
     transition:  1s;
+    position: relative;
+    z-index: 1;
 }
 .content:hover{
+    cursor:pointer;
     transform: scale(1.05);
     -webkit-transition:  1s; /* Safari */
     transition:  1s;
+    z-index: 5;
 }
 
 .content p, h2

@@ -1,7 +1,8 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background: url('../img/background.jpg') fixed center;
-    background-size: 100%
+    background-size: coover;
+    background-repeat: no-repeat;
 }
 .navbar-default{
     border: none !important;
