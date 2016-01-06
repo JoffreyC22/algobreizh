@@ -1,8 +1,12 @@
 body{
     font-family: 'Montserrat', sans-serif;
     background: url('../img/background.jpg') fixed center;
-    background-size: coover;
+    background-size: cover;
     background-repeat: no-repeat;
+}
+a:hover{
+    color:#fff;
+    text-decoration: none;
 }
 .navbar-default{
     border: none !important;
