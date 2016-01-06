@@ -14,6 +14,14 @@
 #produit{
     background-color: #00695c;
 }
+
+#produit img{
+    width: 50%;
+}
+
+#produit h2{
+    color: white;
+}
 /*******          Panier          ********/
 #panier{
     background-color: #283593;
