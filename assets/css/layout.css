@@ -28,3 +28,6 @@ body{
 .no-padding{
     padding: 0px;
 }
+.no-padding-rigth{
+    padding-right: 0px;
+}
