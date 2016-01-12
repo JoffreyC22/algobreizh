@@ -13,6 +13,7 @@ $(document).ready(function () {
         'closeEffect': 'elastic',
         'openSpeed': '450',
         'closeSpeed': '450',
+        'background': 'red',
     });
     $('.fancybox-contact').fancybox({
         'type': 'iframe',
