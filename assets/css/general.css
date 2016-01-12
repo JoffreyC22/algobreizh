@@ -77,6 +77,14 @@
 #produit h2{
     color: white;
 }
+#produit-content{
+    background-color : rgba(255,255,255,0.8);
+    padding: 10px;
+    overflow: auto;
+}
+#produit-content h1{
+    color: rgba(0,105,92,1);
+}
 /*******          Panier          ********/
 #panier{
     background-color: rgba(40,53,147,0.8);

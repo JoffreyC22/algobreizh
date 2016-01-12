@@ -1,5 +1,9 @@
-{# empty Twig template #}
-
-<div id="facture-content" class="commande" >
-    <p>test block facture</p>
-</div>
+{% extends "layout.twig" %}
+{% block content %}
+    <div class="container">
+        <div id="produit-content" class="commande" >
+            <h1>FRACTURE</h1>
+            <p>test block produit</p>
+        </div>
+    </div>
+{% endblock %}
