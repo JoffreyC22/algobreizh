@@ -7,5 +7,13 @@
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/templates/index.twig</file>
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/templates/layout.twig</file>
         </group>
+        <group name="hn">
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/layout.css</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/templates/produit.twig</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/general.css</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/js/general.js</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/templates/layout.twig</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/js/function.js</file>
+        </group>
     </open-files>
 </project-private>

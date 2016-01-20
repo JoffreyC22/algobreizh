@@ -99,6 +99,11 @@
     margin-top: 15px;
     font-size: 13px;
 }
+#panier-content{
+    background-color : rgba(255,255,255,0.8);
+    padding: 10px;
+    overflow: auto;
+}
 /*******          Contact          ********/
 #contact{
     background-color: rgba(106,27,154,0.8);
@@ -113,7 +118,11 @@
     margin-top: 15px;
     font-size: 13px;
 }
-
+#contact-content{
+    background-color : rgba(255,255,255,0.8);
+    padding: 10px;
+    overflow: auto;
+}
 /*******          Facture          ********/
 #facture{
     background-color: rgba(255,143,0,0.8);
@@ -123,6 +132,11 @@
 #facture:hover{
     background-color: rgba(255,143,0,1);
 }
+#facture-content{
+    background-color : rgba(255,255,255,0.8);
+    padding: 10px;
+    overflow: auto;
+}
 /*******          Commande        ********/
 #commande{
     background-color: rgba(198,40,40,0.8);
@@ -131,4 +145,9 @@
 
 #commande:hover{
     background-color: rgba(198,40,40,1);
+}
+#commande-content{
+    background-color : rgba(255,255,255,0.8);
+    padding: 10px;
+    overflow: auto;
 }

@@ -19,7 +19,7 @@
                             <h3 class="box-title">Differents produits</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                            <table id="produit-item" class="table table-bordered table-striped">
+                            <table id="datatable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>Image</th>
@@ -57,20 +57,5 @@
                     </div>
                 </div>
             </div>
-  <script type="text/javascript">
-      $(function () {
-        $('#produit-item').DataTable({
-              "language": {
-                "url": "http://cdn.datatables.net/plug-ins/1.10.10/i18n/French.json"
-            },
-          "paging": true,
-          "lengthChange": false,
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
         </div>
     {% endblock %}
