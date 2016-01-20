@@ -8,7 +8,7 @@ Twig_Autoloader::register();
 
 $twig = new Twig_Environment(new Twig_Loader_Filesystem('templates'), array(
     'cache' => false, // '/path/to/compilation_cache',
-    'debug' => false
+    'debug' => true
 ));
 
 $twig->addExtension(new Twig_Extension_Debug());
