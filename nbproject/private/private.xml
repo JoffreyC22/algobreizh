@@ -5,10 +5,14 @@
         <group name="hn">
             <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/layout.css</file>
             <file>file:/C:/wamp/www/ecole/algobreizh/templates/produit.twig</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/classes/Panier.php</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/ajax.php</file>
             <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/general.css</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/assets/js/general.js</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/templates/layout.twig</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/assets/js/function.js</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/templates/index.twig</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/classes/Utils.php</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/conf/conf.php</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/templates/panier.twig</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/panier.php</file>
         </group>
         <group>
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/commande.php</file>

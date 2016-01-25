@@ -1,0 +1,13 @@
+Options -Indexes +FollowSymlinks
+RewriteEngine on
+DirectoryIndex index.php
+
+#RewriteCond %{REMOTE_ADDR} !=127.0.0.1
+#RewriteCond %{HTTP_HOST} !^www\.
+#RewriteRule ^(.*)$ http://www.realenergy.fr/$1 [R=301,L]
+#
+#ErrorDocument 404 http://realenergy.hndigital.fr/
+
+
+# Ajax
+RewriteRule ^ajax/([a-zA-Z]{1,})$ ajax.php?ajax=$1 [QSA,L]

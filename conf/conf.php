@@ -18,9 +18,9 @@ if( $ip == '127.0.0.1' ){
 
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
-    define('DB_PASSWORD', 'root');
+    define('DB_PASSWORD', '');
     define('DB_NAME', 'algobreizh');
-    define('DB_PATH', 'C:\Users\Joffrey\Desktop\UwAmp\www\tetete');
+    define('PATH', 'http://127.0.0.1/ecole/algobreizh/');
 
 }
 else {

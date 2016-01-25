@@ -4,90 +4,54 @@
         <div class="col-lg-12">
             <div id="panier-content" class="" >
                 <h1 class="text-center" >PANIER</h1>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
-                    <ol class="breadcrumb">
-                        <li><a href="index.php">Acceuil</a></li>
-                        <li class="active">Panier</li>
-                    </ol>
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-5 text-right">
-                    <a title="retour" href="index.php"><img class="arrow" src="assets/img/back57.png"></a>
-                </div>
+
                 <div class="col-lg-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">Votre panier</h3>
-                        </div><!-- /.box-header -->
-                        <div class="box-body">
-                            <table id="datatable" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.5</td>
-                                        <td>Win 95+</td>
-                                        <td>5.5</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 6</td>
-                                        <td>Win 98+</td>
-                                        <td>6</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td>7</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>AOL browser (AOL desktop)</td>
-                                        <td>Win XP</td>
-                                        <td>6</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 1.0</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td>1.7</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 1.5</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td>1.8</td>
-                                        <td>A</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div><!-- /.box-body -->
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Acceuil</a></li>
+                            <li class="active">Panier</li>
+                        </ol>
+                    </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-5 text-right">
+                        <a title="retour" href="#"><img class="arrow" src="assets/img/back57.png"></a>
                     </div>
                 </div>
+                <div class='clear'>
+                {% if itemsPanier is empty %}
+                    <div class='col-lg-12'>
+                        <p class='text-center panier-vide' >Votre Panier est vide pour le moment nous vous invitant à alller commander dans la page <a href='produit.php'>produits</a></p>
+                    </div>
+                {% else %}
+                    <div class="row">
+                        {% for itemPanier in itemsPanier %}
+                            <div class="col-lg-12">
+                                <div class="article-panier">
+                                    <div class="col-lg-6">
+                                        <p class="article-libelle" >{{ itemPanier.libelle }}</p>
+                                        <img src="tools/thumbnailer.php?src=../assets/img/Produits/{{ itemPanier.image }}&w=150&h=150&method=scale-min ">
+
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <p class="article-code"><strong>Code article : </strong>{{ itemPanier.code }}</p>
+                                        <p class="article-qte"><strong>Quantité :</strong> {{ itemPanier.qte }}</p>
+                                        <p class="article-prix"><strong> Prix unité :</strong> {{ itemPanier.prix }} €</p>
+                                        <p class="article-tva"><strong> TVA  : </strong> {{ itemPanier.tva }} </p>
+                                        <p class="article-prix-total"><strong>Prix total : </strong> {{ itemPanier.prix * itemPanier.qte }} € HT</p>
+                                        <a href="panier.php?action=deleteArticle&ref={{ itemPanier.code }}" class="btn-sm btn btn-warning">Supprimer Article</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="pull-right panier-confirm">
+
+                        <a href="panier.php?action=deleteCart" class=" btn-md btn btn-danger">Annuler La commande</a>
+                        <button class=" btn-md btn btn-success">Valider la commande</button>
+                    </div>
+                {% endif %}
             </div>
         </div>
+
+
     {% endblock %}

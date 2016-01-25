@@ -8,7 +8,7 @@ class ArticlesManager {
         }
         return (isset($articles)) ? $articles : null ;
     }
-
+    
     public static function getArticlesById($id){
         $pdo = Database::getInstance()->prepare('SELECT * FROM articles WHERE idArticle=:idArticle');
         $pdo->bindValue(':idArticle',$id);
@@ -18,6 +18,14 @@ class ArticlesManager {
         return ($data != false ) ? $articles : false;
     }
 
+    public static function getAllArticlesByCodeArticle($codeArticle){
+        $pdo = Database::getInstance()->prepare('SELECT * FROM articles WHERE codeArticle=:codeArticle');
+        $pdo->bindValue(':codeArticle',$codeArticle);
+        $pdo->execute();
+        $data = $pdo->fetch(PDO::FETCH_ASSOC);
+        $articles = new Articles($data);
+        return ($data != false ) ? $articles : false;
+    }
     public static function addArticles(Articles $articles){
         try { 
             $pdo = Database::getInstance()->prepare('INSERT INTO  articles (codeArticle,libelleArticle,image,prix,unite,TVA,idFamille ) VALUES (:codeArticle,:libelleArticle,:image,:prix,:unite,:TVA,:idFamille)');

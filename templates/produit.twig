@@ -31,16 +31,50 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                     {% for article in articles %} 
-                                    <tr>
-                                        <td><img src="assets/img/Produits/{{ article.getImage}}" alt="{{ article.getLibelleArticle}}"></td>
-                                        <td>{{ article.getLibelleArticle}}</td>
-                                        <td>{{ article.getCodeArticle}}</td>
-                                        <td>{{ article.getPrix}} € <br /><span class="help-block"><i> TVA : {{ article.getTVA}}</i></span></td>
-                                        <td>{{ article.getUnite}}</td>
-                                        <td ><a href="" class="btn btn-warning"><img title="ajouter au panier " class="btn-image" src="assets/img/shopping-small.png"> </a></td>
+                                    {% for article in articles %} 
+                                        <tr>
+                                            <td><img src="assets/img/Produits/{{ article.getImage}}" alt="{{ article.getLibelleArticle}}"></td>
+                                            <td>{{ article.getLibelleArticle}}</td>
+                                            <td>{{ article.getCodeArticle}}</td>
+                                            <td>{{ article.getPrix}} € <br /><span class="help-block"><i> TVA : {{ article.getTVA}}</i></span></td>
+                                            <td>{{ article.getUnite}}</td>
+                                            <td >
+                                                <form id="form-add-panier-{{ article.getCodeArticle}}" method="post" >
+                                                    <input class="form-control" type="hidden" name="code-produit" value="{{ article.getCodeArticle }}" />
+                                                    <div class="col-lg-6">
+                                                        <input class="form-control"  type="number" name="nb-produit" style="width:100px" min='1'/>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <button type="submit" class="button-add-panier btn btn-warning"><img title="ajouter au panier " class="btn-image" src="assets/img/shopping-small.png"> </button>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                    <script >
+                                        $(document).ready(function () {
+                                                                    
+                                            $('#form-add-panier-{{ article.getCodeArticle}}').on('submit', function (e) {
+                                                e.preventDefault();
+
+                                                $.ajax({
+                                                    url: "ajax/addPanier",
+                                                    method: 'POST',
+                                                    dataType: 'json',
+                                                    data: $(this).serialize(),
+                                                    success: function (data, status) {
+                                                        $.each(data, function (i, val) {
+
+                                                            if (val === "success")
+                                                                $('#panier-modal').modal();
+                                                                
+                                                        });
+                                                    }
+                                                });
+
+                                            });
+                                        });
+                                    </script>
                                     </tr>
-                                    {% endfor %}
+                                {% endfor %}
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -58,4 +92,22 @@
                 </div>
             </div>
         </div>
+            <div id="panier-modal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Ajoute Panier</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>L'article a bien été ajouter au panier ! </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Continuer vos achats</button>
+                            <a href="panier.php" type="button" class="btn btn-primary">Voir le panier</a>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+
     {% endblock %}
