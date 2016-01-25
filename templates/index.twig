@@ -7,7 +7,7 @@
                 <a href="produit.php" class="fancybox-produit">
                     <div id="produit" class="content">
                         <img class='img-responsive' src="tools/thumbnailer.php?src=../assets/img/Produits/seaweed-products.jpg&w=300&h=135&method=scale-min" alt="produits">
-                        <h2 class="text-center">Produits</h2>
+                        <h2 class="text-center">PRODUITS</h2>
                     </div>
                 </a>
             </div>
@@ -39,8 +39,6 @@
                         </div>
                         <div class="col-lg-8">
                             <h2><strong>Factures</strong></h2>
-                            <p>Payées <span class="pull-right">5</span></p>
-                            <p>Dues <span class="pull-right">2</span></p>
                         </div>
                     </div>
                 </a>
@@ -53,8 +51,8 @@
                         </div>
                         <div class="col-lg-8">
                             <h2><strong>Commandes</strong></h2>
-                            <p>En cours <span class="pull-right">5</span></p>
-                            <p>Validees <span class="pull-right">2</span></p>
+                            <p>En cours <span class="pull-right">{{ nbCommandes}}</span></p>
+                            <p>Validees <span class="pull-right">{{ nbEncours }}</span></p>
                         </div>
                     </div>
                 </a>

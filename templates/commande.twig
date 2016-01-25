@@ -3,15 +3,15 @@
     <div class="container">
         <div class="col-lg-12">
             <div id="commande-content" class="" >
-                <h1 class="text-center" >COMMANDE</h1>
+                <h1 class="text-center" >COMMANDES</h1>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
                     <ol class="breadcrumb">
-                        <li><a href="#">Acceuil</a></li>
-                        <li class="active">COMMANDE</li>
+                        <li><a href="index.php">Acceuil</a></li>
+                        <li class="active">Commandes</li>
                     </ol>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-5 text-right">
-                    <a title="retour" href="#"><img class="arrow" src="assets/img/back57.png"></a>
+                    <a title="retour" href="index.php"><img class="arrow" src="assets/img/back57.png"></a>
                 </div>
                 <div class="col-lg-12">
                     <div class="box">
@@ -22,66 +22,28 @@
                             <table id="datatable" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Code client</th>
+                                        <th>Date de la commande</th>
+                                        <th>Statut</th>
+                                        <th>Montant</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 5.5</td>
-                                        <td>Win 95+</td>
-                                        <td>5.5</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 6</td>
-                                        <td>Win 98+</td>
-                                        <td>6</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 7</td>
-                                        <td>Win XP SP2+</td>
-                                        <td>7</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>AOL browser (AOL desktop)</td>
-                                        <td>Win XP</td>
-                                        <td>6</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 1.0</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td>1.7</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gecko</td>
-                                        <td>Firefox 1.5</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td>1.8</td>
-                                        <td>A</td>
-                                    </tr>
+                                    {% for commande in commandes %} 
+                                        <tr>
+                                            <td>{{ commande.getCodeClient}}</td>
+                                            <td>{{ commande.getDateCommande}}</td>
+                                            <td>{{ (commande.getValide == "1") ? 'Validé' : 'En cours'  }}</td>
+                                            <td>{{ commande.getMontant}} € <br /></td>
+                                        </tr>
+                                    {% endfor %}
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Rendering engine</th>
-                                        <th>Browser</th>
-                                        <th>Platform(s)</th>
-                                        <th>Engine version</th>
-                                        <th>CSS grade</th>
+                                        <th>Code client</th>
+                                        <th>Date de la commande</th>
+                                        <th>Statut</th>
+                                        <th>Montant</th>
                                     </tr>
                                 </tfoot>
                             </table>

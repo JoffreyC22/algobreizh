@@ -7,6 +7,7 @@ class Commandes extends Object {
     private $codeClient;
     private $valide;
     private $idUtilisateur;
+    private $commandeValidee;
 
     public function __construct($commandes =array()) {
         parent::__construct($commandes);
@@ -35,6 +36,9 @@ class Commandes extends Object {
     function getIdUtilisateur() {
         return $this->idUtilisateur;
     }
+    
+  
+    
 
 
     function setIdCommande($idCommande) {
@@ -60,5 +64,7 @@ class Commandes extends Object {
     function setIdUtilisateur($idUtilisateur) {
         return $this->idUtilisateur = $idUtilisateur ;
     }
+    
+ 
 
 }
