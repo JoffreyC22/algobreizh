@@ -1,6 +1,13 @@
 <?php
 define('NO_LOGIN_REQUIRE', TRUE);
 require 'conf/conf.php';
+
+if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'logOut')
+    $_SESSION = array();
+
+if (!empty($_SESSION['customer']['utilisateur']) && !empty($_SESSION['customer']['motDePasse']))
+    Utils::redirect('index.php');
+
 if (!empty($_POST)) {
     if(isset($_POST['submit'])){
         $controle = new Errors();
@@ -13,17 +20,24 @@ if (!empty($_POST)) {
         if($controle->isEmpty()){
             $utilisateur = $_POST['codeClient'];
             $motDePasse = $_POST['motDePasse'];
+            $customer = UtilisateursManager::getUtilisateurByCodeClientAndPassword($utilisateur, $motDePasse);
+            if($customer){
+                $_SESSION['customer']['codeClient'] = $customer->getCodeClient();
+                $_SESSION['customer']['motDePasse'] = $customer->getMotDePasse();
+                $_SESSION['customer']['nom'] = $customer->getNom();
+                $_SESSION['customer']['prenom'] = $customer->getPrenom();
+                $_SESSION['customer']['email'] = $customer->getEmail();
+                $_SESSION['customer']['telephone'] = $customer->getTelephone();
+                $_SESSION['customer']['adresse'] = $customer->getAdresse();
+                $_SESSION['customer']['codePostal'] = $customer->getCodePostal();
+                $_SESSION['customer']['ville'] = $customer->getVille();
 
-            if(UtilisateursManager::getUtilisateurByCodeClientAndPassword($utilisateur, $motDePasse)) {
-                $_SESSION['utilisateur'] = $utilisateur;
-                $_SESSION['motDePasse'] = $motDePasse;
-
-                header('Location: /algobreizh/algobreizh');
+                Utils::redirect('index.php');
             }
         }
     };
 };
-
 echo $twig->render('connexion.twig',array(
-
+    'controle' => (isset($controle) && !empty($controle)) ?  $controle : null , 
+    'POST' => (isset($_POST) &&  !empty($_POST)) ? $_POST :  '' 
    ));

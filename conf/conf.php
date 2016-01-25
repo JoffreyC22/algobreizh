@@ -20,7 +20,7 @@ if( $ip == '127.0.0.1' or 'localhost'){
     define('DB_USER', 'root');
     define('DB_PASSWORD', '');
     define('DB_NAME', 'algobreizh');
-    define('PATH', 'http://127.0.0.1/ecole/algobreizh/');
+    define('PATH', 'http://127.0.0.1/algobreizh/algobreizh/');
 
 }
 else {
@@ -33,7 +33,7 @@ else {
 
 }
 
-if (empty($_SESSION) && !defined('NO_LOGIN_REQUIRE')){
+if (empty($_SESSION['customer']) && !defined('NO_LOGIN_REQUIRE')){
   header('Location: connexion.php');  
   exit();
 } 
