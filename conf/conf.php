@@ -14,7 +14,7 @@ $twig = new Twig_Environment(new Twig_Loader_Filesystem('templates'), array(
 $twig->addExtension(new Twig_Extension_Debug());
 $ip = $_SERVER['SERVER_ADDR'];
 
-if( $ip == '127.0.0.1' ){
+if( $ip == '127.0.0.1' or 'localhost'){
 
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
@@ -32,4 +32,9 @@ else {
     define('DB_PATH', 'ftp.infos');
 
 }
+
+if (empty($_SESSION) && !defined('NO_LOGIN_REQUIRE')){
+  header('Location: connexion.php');  
+  exit();
+} 
 

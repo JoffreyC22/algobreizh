@@ -18,6 +18,16 @@ class UtilisateursManager {
         return ($data != false ) ? $utilisateurs : false;
     }
 
+    public static function getUtilisateurByCodeClientAndPassword($codeClient, $motDePasse){
+        $pdo = Database::getInstance()->prepare('SELECT * FROM utilisateurs WHERE codeClient=:codeClient AND motDePasse=:motDePasse');
+        $pdo->bindValue(':codeClient', $codeClient);
+        $pdo->bindValue(':motDePasse', $motDePasse);
+        $pdo->execute();
+        $data = $pdo->fetch(PDO::FETCH_ASSOC);
+        $utilisateurs = new Utilisateurs($data);
+        return ( $data != false ) ? $utilisateurs : false;
+    }
+
     public static function addUtilisateurs(Utilisateurs $utilisateurs){
         try { 
             $pdo = Database::getInstance()->prepare('INSERT INTO  utilisateurs (codeClient,email,nom,prenom,ville,codePostal,adresse,telephone,motDePasse,teleprospecteur ) VALUES (:codeClient,:email,:nom,:prenom,:ville,:codePostal,:adresse,:telephone,:motDePasse,:teleprospecteur)');
