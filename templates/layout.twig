@@ -9,7 +9,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <meta name="description" content="New project">
 
-            <title>Algobreizh</title>
+            <title>Algobreizh {{ PAGE.getTitle() }}</title>
             
             <link rel="stylesheet" href="assets/fonts/font.css">
             <link rel="stylesheet" href="assets/libs/Bootstrap/css/bootstrap.min.css">
@@ -17,6 +17,7 @@
             <link rel="stylesheet" href="assets/libs/Bootstrap/css/font-awesome.css">
             <link rel="stylesheet" href="assets/css/layout.css">
             <link rel="stylesheet" href="assets/css/general.css">
+            <link rel="stylesheet" href="assets/css/button.css">
             <link href="assets/libs/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
             <script src="assets/libs/Jquery/jquery-1.11.3.min.js"></script>
             
@@ -39,7 +40,7 @@
                             </div>
                             <div id="navbar" class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right">
-                                    <li><p class="green customer" >User</p></li>
+                                    <li><a href="informations.php" class="green customer" > {{ USER_NAME }}</a></li>
                                     <li><a class="logOut" href="connexion.php?action=logOut"><img src="assets/img/turn-off1-white.png"></a></li>
                                 </ul>
                             </div><!--/.nav-collapse -->

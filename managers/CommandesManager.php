@@ -28,6 +28,7 @@ class CommandesManager {
             $pdo->bindValue(':valide', $commandes->getValide());
             $pdo->bindValue(':idUtilisateur', $commandes->getIdUtilisateur());
             $pdo->execute();
+            
             $commandes->setIdCommande(Database::getInstance()->lastInsertId());
         } catch (PDOException $e) {
             echo $e->getMessage();

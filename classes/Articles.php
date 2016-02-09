@@ -78,5 +78,9 @@ class Articles extends Object {
     function setIdFamille($idFamille) {
         return $this->idFamille = $idFamille ;
     }
+    function getFamille(){
+       $famile =   ArticlesManager::getFamille($this->idFamille);
+       return $famile;
+    }
 
 }

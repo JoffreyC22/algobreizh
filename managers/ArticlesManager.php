@@ -68,5 +68,13 @@ class ArticlesManager {
 
       $pdo->execute();
     }
+    public static function getFamille($idfamile){
+        $pdo = Database::getInstance()->prepare('SELECT libelleFamille as libelleFamille FROM familles WHERE idFamille=:idFamille');
+        $pdo->bindValue(':idFamille',$idfamile);
+        $pdo->execute();
+        $data = $pdo->fetch(PDO::FETCH_ASSOC);
+        return $codeFamille = $data['libelleFamille'];
+        
+    }
 
 }

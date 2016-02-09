@@ -20,7 +20,7 @@ if( $ip == '127.0.0.1' or 'localhost'){
     define('DB_USER', 'root');
     define('DB_PASSWORD', '');
     define('DB_NAME', 'algobreizh');
-    define('PATH', 'http://127.0.0.1/algobreizh/algobreizh/');
+    define('PATH', 'http://127.0.0.1/ecole/algobreizh/');
 
 }
 else {
@@ -32,6 +32,9 @@ else {
     define('DB_PATH', 'ftp.infos');
 
 }
+
+if(isset($_SESSION['customer']['nom']) && !empty($_SESSION['customer']['nom']))
+    $twig->addGlobal('USER_NAME', $_SESSION['customer']['nom']);
 
 if (empty($_SESSION['customer']) && !defined('NO_LOGIN_REQUIRE')){
   header('Location: connexion.php');  

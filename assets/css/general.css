@@ -127,6 +127,9 @@
 .panier-vide{
     margin : 25px 0px 25px 0px;
 }
+.confirm-size{
+    font-size: 11px;
+}
 /*******          Contact          ********/
 #contact{
     background-color: rgba(106,27,154,0.8);

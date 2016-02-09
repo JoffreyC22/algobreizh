@@ -20,13 +20,12 @@ class DetailsManager {
 
     public static function addDetails(Details $details){
         try { 
-            $pdo = Database::getInstance()->prepare('INSERT INTO  details (codeArticle,qteArticle,montant,idCommande,idCommande_commandes,idArticle ) VALUES (:codeArticle,:qteArticle,:montant,:idCommande,:idCommande_commandes,:idArticle)');
+            var_dump($details);
+            $pdo = Database::getInstance()->prepare('INSERT INTO  details (codeArticle,qteArticle,montant,idCommande) VALUES (:codeArticle,:qteArticle,:montant,:idCommande)');
             $pdo->bindValue(':codeArticle',$details->getCodeArticle());
             $pdo->bindValue(':qteArticle',$details->getQteArticle());
             $pdo->bindValue(':montant',$details->getMontant());
             $pdo->bindValue(':idCommande',$details->getIdCommande());
-            $pdo->bindValue(':idCommande_commandes',$details->getIdCommande_commandes());
-            $pdo->bindValue(':idArticle',$details->getIdArticle());
             $pdo->execute();
             $details->setIdDetail(Database::getInstance()->lastInsertId());
         }
@@ -37,14 +36,12 @@ class DetailsManager {
 
     public static function updateDetails(Details $details){
         try { 
-            $pdo = Database::getInstance()->prepare('UPDATE  details SET codeArticle=:codeArticle,qteArticle=:qteArticle,montant=:montant,idCommande=:idCommande,idCommande_commandes=:idCommande_commandes,idArticle=:idArticle WHERE idDetail=:idDetail ');
+            $pdo = Database::getInstance()->prepare('UPDATE  details SET codeArticle=:codeArticle,qteArticle=:qteArticle,montant=:montant,idCommande=:idCommande WHERE idDetail=:idDetail ');
             $pdo->bindValue(':idDetail',$details->getIdDetail());
             $pdo->bindValue(':codeArticle',$details->getCodeArticle());
             $pdo->bindValue(':qteArticle',$details->getQteArticle());
             $pdo->bindValue(':montant',$details->getMontant());
             $pdo->bindValue(':idCommande',$details->getIdCommande());
-            $pdo->bindValue(':idCommande_commandes',$details->getIdCommande_commandes());
-            $pdo->bindValue(':idArticle',$details->getIdArticle());
             $pdo->execute();
         }
         catch (PDOException $e) {

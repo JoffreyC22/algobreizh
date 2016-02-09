@@ -1,9 +1,11 @@
 <?php
 require 'conf/conf.php';
+define('PAGE','PANIER');
+
+require 'conf/conf_page.php';
 $panier = new Panier();
 $panier->showCart();
 $items = $panier->showCart();
-
 $itemsPanier = array();
 
 if(!empty($items)){
@@ -22,7 +24,10 @@ foreach($items['ref'] as $key => $item){
 };
 }
 /// TRAITEMENT PANIER  
-
+$montatPanier = 0 ;
+foreach($itemsPanier as $itemPanier)
+   $montatPanier += $itemPanier['prix'] * $itemPanier['qte'];
+             
 $action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : null;
 if($action){
     switch($action){
@@ -39,8 +44,36 @@ if($action){
             
             Utils::redirect('panier.php');
         break;
+        case 'confirmCart' : 
+            $dateCommande = date('Y-m-d H:i:s'); 
+            
+            $commande = new Commandes();
+            $commande->setCodeClient($_SESSION['customer']['codeClient']);
+            $commande->setDateCommande($dateCommande);
+            $commande->setValide("0");
+            $commande->setMontant($montatPanier);
+            $commande->setIdUtilisateur($_SESSION['customer']['idClient']);
+            
+            CommandesManager::addCommandes($commande);
+            
+            foreach($itemsPanier as $itemPanier){
+                $detail = new Details();
+                $detail->setCodeArticle($itemPanier['code']);
+                $detail->setQteArticle($itemPanier['qte']);
+                $detail->setMontant($itemPanier['prix'] * $itemPanier['qte'] );
+                $detail->setIdCommande($commande->getIdCommande());
+                
+                DetailsManager::addDetails($detail);
+              
+                
+            }
+            $_SESSION['cart'] = array();
+            Utils::redirect('panier.php');
+            break;
     };
 };
 echo $twig->render('panier.twig',array(
-    'itemsPanier' => $itemsPanier
+    'PAGE' => $_PAGE,
+    'itemsPanier' => $itemsPanier,
+    'montatPanier' => $montatPanier
    ));

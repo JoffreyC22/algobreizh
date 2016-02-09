@@ -42,3 +42,7 @@ a:hover{
 .clear{
     clear: both;
 }
+.hide{
+    display:none;
+    
+}

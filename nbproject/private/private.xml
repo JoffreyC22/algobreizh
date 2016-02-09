@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="hn">
-            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/layout.css</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/templates/produit.twig</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/classes/Panier.php</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/ajax.php</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/general.css</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/templates/index.twig</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/classes/Utils.php</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/conf/conf.php</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/templates/panier.twig</file>
-            <file>file:/C:/wamp/www/ecole/algobreizh/panier.php</file>
-        </group>
         <group>
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/commande.php</file>
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/classes/Object.php</file>
@@ -21,6 +9,13 @@
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/templates/index.twig</file>
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/managers/CommandesManager.php</file>
             <file>file:/C:/Users/Joffrey/Desktop/UwAmp/www/algobreizh/templates/commande.twig</file>
+        </group>
+        <group name="hn">
+            <file>file:/C:/wamp/www/ecole/algobreizh/templates/produit.twig</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/layout.css</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/general.css</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/assets/css/button.css</file>
+            <file>file:/C:/wamp/www/ecole/algobreizh/templates/layout.twig</file>
         </group>
     </open-files>
 </project-private>

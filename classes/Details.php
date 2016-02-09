@@ -6,8 +6,6 @@ class Details extends Object {
     private $qteArticle;
     private $montant;
     private $idCommande;
-    private $idCommande_commandes;
-    private $idArticle;
 
     public function __construct($details =array()) {
         parent::__construct($details);
@@ -33,15 +31,6 @@ class Details extends Object {
         return $this->idCommande;
     }
 
-    function getIdCommande_commandes() {
-        return $this->idCommande_commandes;
-    }
-
-    function getIdArticle() {
-        return $this->idArticle;
-    }
-
-
     function setIdDetail($idDetail) {
         return $this->idDetail = $idDetail ;
     }
@@ -60,14 +49,6 @@ class Details extends Object {
 
     function setIdCommande($idCommande) {
         return $this->idCommande = $idCommande ;
-    }
-
-    function setIdCommande_commandes($idCommande_commandes) {
-        return $this->idCommande_commandes = $idCommande_commandes ;
-    }
-
-    function setIdArticle($idArticle) {
-        return $this->idArticle = $idArticle ;
     }
 
 }

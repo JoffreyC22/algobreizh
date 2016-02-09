@@ -21,7 +21,10 @@ if (!empty($_POST)) {
             $utilisateur = $_POST['codeClient'];
             $motDePasse = $_POST['motDePasse'];
             $customer = UtilisateursManager::getUtilisateurByCodeClientAndPassword($utilisateur, $motDePasse);
+            
             if($customer){
+                $_SESSION['customer']['idClient'] = $customer->getIdUtilisateur();
+                $_SESSION['customer']['codeClient'] = $customer->getCodeClient();
                 $_SESSION['customer']['codeClient'] = $customer->getCodeClient();
                 $_SESSION['customer']['motDePasse'] = $customer->getMotDePasse();
                 $_SESSION['customer']['nom'] = $customer->getNom();

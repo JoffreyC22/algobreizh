@@ -17,6 +17,7 @@
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">Differents produits</h3>
+                            <p>Chaque fois que vous selectionner un produit vous devez cliquer sur le button jeune</p>
                         </div><!-- /.box-header -->
                         <div class="box-body">
                             <table id="datatable" class="table table-bordered table-striped">
@@ -24,6 +25,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Libelle article</th>
+                                        <th>Famille</th>
                                         <th>Code article</th>
                                         <th>Prix </th>
                                         <th>Unite</th>
@@ -35,6 +37,7 @@
                                         <tr>
                                             <td><img src="assets/img/Produits/{{ article.getImage}}" alt="{{ article.getLibelleArticle}}"></td>
                                             <td>{{ article.getLibelleArticle}}</td>
+                                            <td>{{ article.getFamille}}</td>
                                             <td>{{ article.getCodeArticle}}</td>
                                             <td>{{ article.getPrix}} € <br /><span class="help-block"><i> TVA : {{ article.getTVA}}</i></span></td>
                                             <td>{{ article.getUnite}}</td>
@@ -42,16 +45,16 @@
                                                 <form id="form-add-panier-{{ article.getCodeArticle}}" method="post" >
                                                     <input class="form-control" type="hidden" name="code-produit" value="{{ article.getCodeArticle }}" />
                                                     <div class="col-lg-6">
-                                                        <input class="form-control"  type="number" name="nb-produit" style="width:100px" min='1'/>
-                                                    </div>
+                                                        <input class=" form-control"  type="number" name="nb-produit" style="width:75px" min='1'/>
+                                                     </div>
                                                     <div class="col-lg-6">
-                                                        <button type="submit" class="button-add-panier btn btn-warning"><img title="ajouter au panier " class="btn-image" src="assets/img/shopping-small.png"> </button>
+                                                        <button type="submit" class="button--moema button--inverted"><img title="ajouter au panier " class="btn-image" src="assets/img/shopping-small.png"> </button>
                                                     </div>
                                                 </form>
                                             </td>
                                     <script >
                                         $(document).ready(function () {
-                                                                    
+                                                      
                                             $('#form-add-panier-{{ article.getCodeArticle}}').on('submit', function (e) {
                                                 e.preventDefault();
 
@@ -80,6 +83,7 @@
                                     <tr>
                                         <th>Image</th>
                                         <th>Libelle article</th>
+                                        <th>Famille</th>
                                         <th>Code article</th>
                                         <th>Prix </th>
                                         <th>Unite</th>
