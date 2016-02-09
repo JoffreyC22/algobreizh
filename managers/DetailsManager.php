@@ -17,6 +17,14 @@ class DetailsManager {
         $details = new Details($data);
         return ($data != false ) ? $details : false;
     }
+    
+     public static function getDetailsByIdCommande($id){
+        $pdo = Database::getInstance()->query('SELECT * FROM details WHERE idCommande =' . $id);
+        while ($data = $pdo->fetch(PDO::FETCH_ASSOC)) {
+            $details[] = new Details($data);
+        }
+        return (isset($details)) ? $details : null;
+    }
 
     public static function addDetails(Details $details){
         try { 
@@ -55,5 +63,6 @@ class DetailsManager {
 
       $pdo->execute();
     }
+    
 
 }

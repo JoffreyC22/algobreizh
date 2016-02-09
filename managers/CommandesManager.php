@@ -19,6 +19,22 @@ class CommandesManager {
         return ($data != false ) ? $commandes : false;
     }
 
+    public static function getCommandesByIdUtilisateur($idUtilisateur) {
+        $pdo = Database::getInstance()->query('SELECT * FROM commandes WHERE idUtilisateur =' . $idUtilisateur);
+        while ($data = $pdo->fetch(PDO::FETCH_ASSOC)) {
+            $commandes[] = new Commandes($data);
+        }
+        return (isset($commandes)) ? $commandes : null;
+    }
+
+    public static function getCommandesByIdUtilisateurValidee($idUtilisateur) {
+        $pdo = Database::getInstance()->query('SELECT * FROM commandes WHERE idUtilisateur =' . $idUtilisateur . ' AND valide =  1');
+        while ($data = $pdo->fetch(PDO::FETCH_ASSOC)) {
+            $commandes[] = new Commandes($data);
+        }
+        return (isset($commandes)) ? $commandes : null;
+    }
+
     public static function addCommandes(Commandes $commandes) {
         try {
             $pdo = Database::getInstance()->prepare('INSERT INTO  commandes (montant,dateCommande,codeClient,valide,idUtilisateur ) VALUES (:montant,:dateCommande,:codeClient,:valide,:idUtilisateur)');
@@ -57,19 +73,19 @@ class CommandesManager {
         $pdo->execute();
     }
 
-    public static function countCommandesValidees() {
-        $pdo = Database::getInstance()->query('SELECT COUNT(idCommande) as nbCommande FROM commandes WHERE valide= 1 ');
+    public static function countCommandesValidees($idUtilisateur) {
+        $pdo = Database::getInstance()->query('SELECT COUNT(idCommande) as nbCommande FROM commandes WHERE valide= 1 AND idUtilisateur = ' . $idUtilisateur);
 
         $data = $pdo->fetch(PDO::FETCH_ASSOC);
 
         return $data['nbCommande'];
     }
 
-    public static function countCommandesEncours() {
-        $pdo = Database::getInstance()->query('SELECT COUNT(idCommande) as nbEncours FROM commandes WHERE valide= 0 ');
+    public static function countCommandesEncours($idUtilisateur) {
+        $pdo = Database::getInstance()->query('SELECT COUNT(idCommande) as nbEncours FROM commandes WHERE valide= 0 AND idUtilisateur = ' . $idUtilisateur);
 
         $data = $pdo->fetch(PDO::FETCH_ASSOC);
-        
+
         return $data['nbEncours'];
     }
 

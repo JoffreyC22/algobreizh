@@ -23,8 +23,12 @@ if (!empty($_POST)) {
             $customer = UtilisateursManager::getUtilisateurByCodeClientAndPassword($utilisateur, $motDePasse);
             
             if($customer){
+<<<<<<< Updated upstream
                 $_SESSION['customer']['idClient'] = $customer->getIdUtilisateur();
                 $_SESSION['customer']['codeClient'] = $customer->getCodeClient();
+=======
+                $_SESSION['customer']['id'] = $customer->getIdUtilisateur();
+>>>>>>> Stashed changes
                 $_SESSION['customer']['codeClient'] = $customer->getCodeClient();
                 $_SESSION['customer']['motDePasse'] = $customer->getMotDePasse();
                 $_SESSION['customer']['nom'] = $customer->getNom();

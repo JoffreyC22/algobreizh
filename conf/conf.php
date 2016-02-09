@@ -18,9 +18,13 @@ if( $ip == '127.0.0.1' or 'localhost'){
 
     define('DB_HOST', 'localhost');
     define('DB_USER', 'root');
-    define('DB_PASSWORD', '');
+    define('DB_PASSWORD', 'root');
     define('DB_NAME', 'algobreizh');
+<<<<<<< Updated upstream
     define('PATH', 'http://127.0.0.1/ecole/algobreizh/');
+=======
+    define('PATH', 'http://localhost/algobreizh/');
+>>>>>>> Stashed changes
 
 }
 else {

@@ -3,6 +3,7 @@ class Details extends Object {
 
     private $idDetail;
     private $codeArticle;
+    private $libelleArticle;
     private $qteArticle;
     private $montant;
     private $idCommande;
@@ -18,7 +19,11 @@ class Details extends Object {
     function getCodeArticle() {
         return $this->codeArticle;
     }
-
+    
+    function getLibelleArticle() {
+        return $this->libelleArticle;
+    }
+    
     function getQteArticle() {
         return $this->qteArticle;
     }
@@ -38,11 +43,15 @@ class Details extends Object {
     function setCodeArticle($codeArticle) {
         return $this->codeArticle = $codeArticle ;
     }
+    
+     function setLibelleArticle($libelleArticle) {
+        return $this->libelleArticle = $libelleArticle;
+    }
 
     function setQteArticle($qteArticle) {
         return $this->qteArticle = $qteArticle ;
     }
-
+    
     function setMontant($montant) {
         return $this->montant = $montant ;
     }

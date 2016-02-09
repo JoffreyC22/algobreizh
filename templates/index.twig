@@ -16,7 +16,7 @@
                     <a href="panier.php" class="fancybox-panier">
                         <div id="panier"class="content">
                             <img class="center-block img-responsive" src="assets/img/shopping232.png">
-                            <h2>Panier <span class="pull-right">5</span></h2>
+                            <h2>Panier <span class="pull-right"></span></h2>
                         </div>
                     </a>
                 </div>
@@ -44,17 +44,17 @@
                 </a>
             </div> 
             <div class="col-lg-6 no-padding">
-                <a href="commande.php" class="fancybox-commande">
-                    <div id="commande" class="content fancybox">
-                        <div class="col-lg-4">
-                            <img class="" src="assets/img/commande.png">
-                        </div>
-                        <div class="col-lg-8">
-                            <h2><strong>Commandes</strong></h2>
-                            <p>En cours <span class="pull-right">{{ nbCommandes}}</span></p>
-                            <p>Validees <span class="pull-right">{{ nbEncours }}</span></p>
-                        </div>
+                    <a href="commande.php">
+                <div id="commande" class="content fancybox">
+                    <div class="col-lg-4">
+                        <img class="" src="assets/img/commande.png">
                     </div>
+                    <div class="col-lg-8">
+                        <h2><strong>Commandes</strong></h2>
+                        <p>En cours <span class="pull-right">{{ nbEncours }}</span></p>
+                        <p>Validees <span class="pull-right">{{ nbCommandes }}</span></p>
+                    </div>
+                </div>
                 </a>
             </div>  
         </div>
