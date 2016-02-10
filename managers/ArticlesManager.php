@@ -68,7 +68,6 @@ class ArticlesManager {
 
       $pdo->execute();
     }
-<<<<<<< Updated upstream
     public static function getFamille($idfamile){
         $pdo = Database::getInstance()->prepare('SELECT libelleFamille as libelleFamille FROM familles WHERE idFamille=:idFamille');
         $pdo->bindValue(':idFamille',$idfamile);
@@ -77,7 +76,4 @@ class ArticlesManager {
         return $codeFamille = $data['libelleFamille'];
         
     }
-
-=======
->>>>>>> Stashed changes
 }

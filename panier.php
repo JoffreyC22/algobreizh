@@ -18,15 +18,15 @@ foreach($items['ref'] as $key => $item){
         "prix" => $article->getPrix(),
         "tva" => $article->getTVA(),
         "image" => $article->getImage(),
-        "qte" => $items['qte'][$key]
+        "qte" => $items['qte'][$key],
             );
             array_push($itemsPanier, $array);
 };
 }
 /// TRAITEMENT PANIER  
-$montatPanier = 0 ;
+$montantTTC = 0;
 foreach($itemsPanier as $itemPanier)
-   $montatPanier += $itemPanier['prix'] * $itemPanier['qte'];
+    $montantTTC += round($itemPanier['prix'] * $itemPanier['qte'] * (1+$itemPanier['tva'] / 100 ),2);
              
 $action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : null;
 if($action){
@@ -51,7 +51,7 @@ if($action){
             $commande->setCodeClient($_SESSION['customer']['codeClient']);
             $commande->setDateCommande($dateCommande);
             $commande->setValide("0");
-            $commande->setMontant($montatPanier);
+            $commande->setMontant($montantTTC);
             $commande->setIdUtilisateur($_SESSION['customer']['idClient']);
             
             CommandesManager::addCommandes($commande);
@@ -59,14 +59,14 @@ if($action){
             foreach($itemsPanier as $itemPanier){
                 $detail = new Details();
                 $detail->setCodeArticle($itemPanier['code']);
+                $detail->setLibelleArticle($itemPanier['libelle']);
                 $detail->setQteArticle($itemPanier['qte']);
                 $detail->setMontant($itemPanier['prix'] * $itemPanier['qte'] );
                 $detail->setIdCommande($commande->getIdCommande());
-                
+
                 DetailsManager::addDetails($detail);
-              
-                
             }
+
             $_SESSION['cart'] = array();
             Utils::redirect('panier.php');
             break;
@@ -75,5 +75,5 @@ if($action){
 echo $twig->render('panier.twig',array(
     'PAGE' => $_PAGE,
     'itemsPanier' => $itemsPanier,
-    'montatPanier' => $montatPanier
+    'montantTTC' => $montantTTC
    ));

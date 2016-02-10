@@ -1,30 +1,14 @@
 <?php
-
-require 'conf/conf.php';
 define('PAGE','COMMANDE');
-
-<<<<<<< Updated upstream
+require 'conf/conf.php';
 require 'conf/conf_page.php';
 
-echo $twig->render('commande.twig',array(
-        'PAGE' => $_PAGE,
-        'commandes' => CommandesManager::getAllCommandes() ,
-       
-        
-   ));
-=======
-if (empty($_SESSION['customer']['id']) && !isset($_SESSION['customer']['id'])) {
+if (empty($_SESSION['customer']['idClient']) && !isset($_SESSION['customer']['idClient'])) {
     Utils::redirect('index.php');
 }
 
 echo $twig->render('commande.twig', array(
-    'commandes' => CommandesManager::getCommandesByIdUtilisateur($_SESSION['customer']['id']),
+    'commandes' => CommandesManager::getCommandesByIdUtilisateur($_SESSION['customer']['idClient']),
+    'PAGE' => $_PAGE
 ));
 
-
-
-
-
-
-
->>>>>>> Stashed changes

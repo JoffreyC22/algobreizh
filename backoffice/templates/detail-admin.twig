@@ -1,0 +1,99 @@
+{% extends "layout.twig" %}
+{% block content %}
+    <div class="container">
+        <div class="col-lg-12">
+            <div id="commande-content" class="" >
+                <h1 class="text-center" >FACTURE DETAILLEE</h1>
+                <div class="col-lg-6 col-md-4 col-sm-4 col-xs-7">
+                    <ol class="breadcrumb">
+                        <li><a href="index-admin.php">Acceuil</a></li>
+                        <li><a href="en-cours-admin.php">En Cours</a></li>
+                        <li class="active">Détail de commande</li>
+                    </ol>
+                </div>
+                <div class="col-lg-6 col-md-8 col-sm-8 col-xs-5 text-right">
+                    <a title="retour" href="index-admin.php"><img class="arrow" src="../assets/img/back57.png"></a>
+                </div>
+                <div class="col-lg-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Détail de votre commande</h3>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="col-lg-6">
+                                <h1>ALGOBREIZH</h1>
+                                <p>26 rue rené Yves Creston</p>
+                                <p>35200</p>
+                                <p>02.99.56.23.45</p>
+                            </div>
+                            <div class="col-lg-6">
+                                <h1 class="pull-right">FACTURE</h1>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="col-lg-6">
+                                    <p>Date : {{ commandes.getDateCommande }}</p>
+                                    <p>Numéro de client : {{ commandes.getCodeClient }}</p>
+                                </div>
+                                <div class="col-lg-6">
+
+                                    <p> Nom : {{ utilisateurs.getNom }}</p>
+                                    <p> Adresse : {{ utilisateurs.getVille }}</p>
+                                    <p> Code postal : {{ utilisateurs.getCodePostal }}</p>
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <h4>Intitulé : détail de votre facture/commande</h4>
+                                <table id="table" class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Quantité</th>
+                                            <th>Désignation</th>
+                                            <th>Code article</th>
+                                            <th>Montant HT</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for detail in details %}
+                                        <tr>
+                                                <td>{{ detail.getQteArticle }}</td>
+                                                <td>{{ detail.getLibelleArticle }}</td>
+                                                <td>{{ detail.getCodeArticle  }}</td>
+                                                <td>{{ detail.getMontant }} € <br /></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Quantité</th>
+                                            <th>Désignation</th>
+                                            <th>Code article</th>
+                                            <th>Montant</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <table id="table2" class="table table-bordered table-striped pull-right">
+                                    <thead>
+                                        <tr>
+                                            <th>Total hors taxe</th>
+                                            <th>Total TTC en euros</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ totalHT }} €</td>
+                                            <td>{{ commandes.getMontant }} €</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p>En votre aimable règlement, cordialement.</p>
+                            </div>
+                        </div><!-- /.box-body -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

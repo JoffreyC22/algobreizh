@@ -59,5 +59,4 @@ class Details extends Object {
     function setIdCommande($idCommande) {
         return $this->idCommande = $idCommande ;
     }
-
 }

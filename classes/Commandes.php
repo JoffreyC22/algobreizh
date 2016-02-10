@@ -7,10 +7,7 @@ class Commandes extends Object {
     private $codeClient;
     private $valide;
     private $idUtilisateur;
-<<<<<<< Updated upstream
-=======
     private $tva;
->>>>>>> Stashed changes
 
     public function __construct($commandes =array()) {
         parent::__construct($commandes);
@@ -29,7 +26,7 @@ class Commandes extends Object {
     }
     
     function getMontantHT() {
-        $montantHT = $this->montant/1.2;
+        $montantHT = $this->montant;
         return $montantHT;
     }
     
@@ -49,12 +46,6 @@ class Commandes extends Object {
         return $this->idUtilisateur;
     }
     
-    
-
-  
-    
-
-
     function setIdCommande($idCommande) {
         return $this->idCommande = $idCommande ;
     }

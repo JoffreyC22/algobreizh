@@ -28,9 +28,9 @@ class DetailsManager {
 
     public static function addDetails(Details $details){
         try { 
-            var_dump($details);
-            $pdo = Database::getInstance()->prepare('INSERT INTO  details (codeArticle,qteArticle,montant,idCommande) VALUES (:codeArticle,:qteArticle,:montant,:idCommande)');
+            $pdo = Database::getInstance()->prepare('INSERT INTO  details (codeArticle,libelleArticle,qteArticle,montant,idCommande) VALUES (:codeArticle,:libelleArticle,:qteArticle,:montant,:idCommande)');
             $pdo->bindValue(':codeArticle',$details->getCodeArticle());
+            $pdo->bindValue(':libelleArticle', $details->getLibelleArticle());
             $pdo->bindValue(':qteArticle',$details->getQteArticle());
             $pdo->bindValue(':montant',$details->getMontant());
             $pdo->bindValue(':idCommande',$details->getIdCommande());
@@ -44,9 +44,10 @@ class DetailsManager {
 
     public static function updateDetails(Details $details){
         try { 
-            $pdo = Database::getInstance()->prepare('UPDATE  details SET codeArticle=:codeArticle,qteArticle=:qteArticle,montant=:montant,idCommande=:idCommande WHERE idDetail=:idDetail ');
+            $pdo = Database::getInstance()->prepare('UPDATE  details SET codeArticle=:codeArticle,libelleArticle=:libelleArticle,qteArticle=:qteArticle,montant=:montant,idCommande=:idCommande WHERE idDetail=:idDetail ');
             $pdo->bindValue(':idDetail',$details->getIdDetail());
             $pdo->bindValue(':codeArticle',$details->getCodeArticle());
+            $pdo->bindValue(':libelleArticle', $details->getLibelleArticle());
             $pdo->bindValue(':qteArticle',$details->getQteArticle());
             $pdo->bindValue(':montant',$details->getMontant());
             $pdo->bindValue(':idCommande',$details->getIdCommande());

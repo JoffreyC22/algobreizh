@@ -35,7 +35,7 @@
                                         <p class="article-code"><strong>Code article : </strong>{{ itemPanier.code }}</p>
                                         <p class="article-qte"><strong>Quantité :</strong> {{ itemPanier.qte }}</p>
                                         <p class="article-prix"><strong> Prix unité :</strong> {{ itemPanier.prix }} €</p>
-                                        <p class="article-tva"><strong> TVA  : </strong> {{ itemPanier.tva }} </p>
+                                        <p class="article-tva"><strong> TVA  : </strong> {{ itemPanier.tva }} % </p>
                                         <p class="article-prix-total"><strong>Prix total : </strong> {{ itemPanier.prix * itemPanier.qte }} € HT</p>
                                         <a href="panier.php?action=deleteArticle&ref={{ itemPanier.code }}" class="btn-sm btn btn-warning">Supprimer Article</a>
 
@@ -44,10 +44,12 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="pull-right panier-confirm">
-
-                        <a href="panier.php?action=deleteCart" class=" btn-md btn btn-danger">Annuler La commande</a>
-                        <a class=" btn-md btn btn-success" href="panier.php?action=confirmCart">Valider la commande</a>
+                    <div class="panier-confirm col-lg-12">
+                        <a href="panier.php?action=deleteCart" class=" btn-md btn btn-danger col-lg-3">Annuler La commande</a>
+                        <div>
+                            <p class='col-lg-3 col-lg-offset-3 article-prix-total'><strong>Total : </strong>{{ montantTTC }} € TTC</p>
+                        </div>
+                        <a class=" btn-md btn btn-success col-lg-3" href="panier.php?action=confirmCart">Valider la commande</a>
                     </div>
                 {% endif %}
             </div>

@@ -50,7 +50,7 @@
                                             <th>Quantité</th>
                                             <th>Désignation</th>
                                             <th>Code article</th>
-                                            <th>Montant</th>
+                                            <th>Montant HT</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -76,14 +76,12 @@
                                     <thead>
                                         <tr>
                                             <th>Total hors taxe</th>
-                                            <th>TVA</th>
                                             <th>Total TTC en euros</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>{{ commandes.getMontantHT }} €</td>
-                                            <td>{{ commandes.getTva }}</td>
+                                            <td>{{ totalHT }} €</td>
                                             <td>{{ commandes.getMontant }} €</td>
                                         </tr>
                                     </tbody>
