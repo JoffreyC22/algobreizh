@@ -1,43 +1,140 @@
 {% extends "layout.twig" %}
 {% block content %}
 	<div class="container">
+		<div class="col-lg-12"></div>
         <div class="col-lg-12">
         	<h1 class="text-center" >CONNEXION</h1>
         	<form class="form-horizontal" action="" method="POST">
-			  <div class="form-group">
-			    <label for="exampleInputName2" class="col-lg-offset-2 col-lg-2 control-label">Code client</label>
-			    <div class="col-lg-4">
-			      <input type="text" class="form-control" id="exampleInputName2" placeholder="Code client" name="codeClient">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label for="inputPassword3" class="col-lg-offset-2 col-lg-2 control-label">Mot de passe</label>
-			    <div class="col-lg-4">
-			      <input type="password" class="form-control" id="inputPassword3" placeholder="Mot de passe" name="motDePasse">
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <div class="col-lg-offset-4 col-lg-10">
-			      <button type="submit" class="btn btn-default" name='submit'>Connexion</button>
-			    </div>
-			  </div>
+			 	<div class="form-group">
+			 		{% if controle.get('invalideUser') != null and not errors.isEmpty() %}
+				 		<div class="col-lg-4 col-lg-offset-4">
+				 			<span class="col-lg-12 alert alert-danger">
+				 				{{(controle.get('invalideUser')) ? controle.get('invalideUser')  : '' }}
+				 			</span>
+				 		</div>
+			 		{%endif %}
+			 	</div>
+			 	<div class="form-group">
+			    	<label for="codeClient" class="col-lg-offset-2 col-lg-2 control-label">Code client</label>
+			    	<div class="col-lg-4">
+			      		<input type="text" class="form-control" id="codeClient" placeholder="Code client" name="codeClient" value="{{ (POST.codeClient != '') ? POST.codeClient : '' }}">
+			      		{% if controle.get('codeClient') != null and not errors.isEmpty() %}<span class="col-lg-12 alert alert-danger">{{(controle.get('codeClient')) ? controle.get('codeClient')  : '' }}</span>{%endif %}
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			    	<label for="motDePasse" class="col-lg-offset-2 col-lg-2 control-label">Mot de passe</label>
+		    		<div class="col-lg-4">
+			      		<input type="password" class="form-control" id="motDePasse" placeholder="Mot de passe" name="motDePasse">
+			      		{% if controle.get('motDePasse') != null and not errors.isEmpty() %}<span class="col-lg-12 alert alert-danger">{{(controle.get('motDePasse')) ? controle.get('motDePasse')  : '' }}</span>{%endif %}
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			    	<div class="col-lg-offset-4 col-lg-4">
+			    		<button type="submit" class="btn btn-default" name='submit'>Connexion</button>
+			      		<a type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Inscription</a>
+			    	</div>
+			  	</div>
 			</form>
         </div>
     </div>
-    <!--<script type="text/javascript">
+    <div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Inscription (demande de mot de passe)</h4>
+				</div>
+				<div class="modal-body">
+				<form id="inscription" class="form-horizontal" method="POST">
+					<div class="form-group">
+			 			<span class="col-lg-12 alert alert-danger invalideSignIn hidden"></span>
+				 	</div>
+				 	<div class="form-group">
+						<div class="form-group">
+				    		<label for="codeClientInput" class="col-lg-4 control-label">Code client*</label>
+			    			<div class="col-lg-4">
+				      			<input type="text" class="form-control" id="codeClientInput" placeholder="Code client" name="codeClientSignIn">
+				      			<span class="col-lg-12 alert alert-danger codeClientReturn hidden" ></span>				    		
+				      		</div>
+				  		</div>
+						<div class="form-group">
+				    		<label for="emailInput" class="col-lg-4 control-label">Email*</label>
+			    			<div class="col-lg-4">
+				      			<input type="email" class="form-control" id="emailInput" placeholder="adresse email" name="emailSignIn">
+				      			<span class="col-lg-12 alert alert-danger emailReturn hidden"></span>
+				    		</div>
+				    	</div>
+				    	<div class="form-group">
+				    		<label for="emailInput2" class="col-lg-4 control-label">Confirmez votre email*</label>
+			    			<div class="col-lg-4">
+				      			<input type="email" class="form-control" id="emailInput2" placeholder="adresse email" name="emailSignIn2">
+				      			<span class="col-lg-12 alert alert-danger confirmReturn hidden"></span>
+				      			<span class="col-lg-12 alert alert-danger emailNotSame hidden"></span>
+				    		</div>
+				  		</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default pull-left" name='signIn'>Inscription</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    <script type="text/javascript">
     	$(document).ready(function () {
-                $('.form-horizontal').on('submit', function (e) {
-
+                $('#inscription').on('submit', function (e) {
                     e.preventDefault();
-
                     $.ajax({
-                        url: "connexion.php",
+                        url: "ajax/inscription",
                         method: 'POST',
                         dataType: 'json',
                         data: $(this).serialize(),
+                        success: function(data, status){
+                        	$.each(data, function(i, val){
+                        		if (data.result == 'error') {
+
+                        			if (val.invalideSignIn) {
+	                        			$('.invalideSignIn').html(val.invalideSignIn);
+	                        			$('.invalideSignIn').removeClass('hidden');
+	                        		} else {
+	                        			$('.invalideSignIn').addClass('hidden');
+	                        		};
+
+	                        		if (val.codeClientSignIn) {
+	                        			$('.codeClientReturn').html(val.codeClientSignIn);
+	                        			$('.codeClientReturn').removeClass('hidden');
+	                        		} else {
+	                        			$('.codeClientReturn').addClass('hidden');
+	                        		};
+
+	                        		if (val.emailSignIn) {
+	                        			$('.emailReturn').html(val.emailSignIn);
+	                        			$('.emailReturn').removeClass('hidden');
+	                        		} else {
+	                        			$('.emailReturn').addClass('hidden');
+	                        		};
+
+	                        		if (val.emailSignIn2) {
+		                        		$('.confirmReturn').html(val.emailSignIn2);
+		                        		$('.confirmReturn').removeClass('hidden');
+		                        	} else if (val.emailNotSame) {
+		                        		$('.confirmReturn').html(val.emailNotSame);
+		                        		$('.confirmReturn').removeClass('hidden');
+		                        	} else {
+		                        		$('.confirmReturn').addClass('hidden');
+		                 			};
+
+		                        } else if (data.result == 'success') {
+		                        	$('#inscription').html('<p class="alert alert-success"> votre mot de passe vous a été envoyé par mail à '+data.email+'</p>' );
+		                        } else if (data.result == 'errorSendMail') {
+		                        	
+		                        	$('#inscription').html('<p class="alert alert-danger"> votre mot de passe n\' pas pu être envoyé à '+data.email+'</p>' );
+		                        };
+                        	})
+                        }
                     });
                 });
-
             });
-    </script>-->
+    </script>
 {% endblock %}

@@ -21,4 +21,15 @@ class Utils {
         exit();
     }
 
+    public static function random($length = 8) {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $random = array();
+        $alphaLength = strlen($alphabet) - 1;
+        for ($i = 0; $i < $length; $i++) {
+            $n = rand(0, $alphaLength);
+            $random[] = $alphabet[$n];
+        }
+        return implode($random);
+    }
+
 }

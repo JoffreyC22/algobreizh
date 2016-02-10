@@ -1,25 +1,14 @@
 <?php
-require 'conf/conf.php';
-<<<<<<< Updated upstream
-define('PAGE','HOME');
 
+define('PAGE','HOME');
+require 'conf/conf.php';
 require 'conf/conf_page.php';
 
-echo $twig->render('index.twig',array(
-    'PAGE' => $_PAGE,
-    'nbCommandes' => commandesManager::countCommandesValidees(), 
-    'nbEncours' => commandesManager::countCommandesEncours() 
-   ));
-=======
 
 
 echo $twig->render('index.twig', array(
-    'nbCommandes' => commandesManager::countCommandesValidees($_SESSION['customer']['id']),
-    'nbEncours' => commandesManager::countCommandesEncours($_SESSION['customer']['id']),
+    'nbCommandes' => commandesManager::countCommandesValideesByIdClient($_SESSION['customer']['idClient']),
+    'nbEncours' => commandesManager::countCommandesEncoursByIdClient($_SESSION['customer']['idClient']),
     'commandes' => commandesManager::getAllCommandes(),
+    'PAGE' => $_PAGE
 ));
-
-var_dump($_SESSION);
-
-
->>>>>>> Stashed changes

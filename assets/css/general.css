@@ -163,7 +163,7 @@
     padding: 10px;
     overflow: auto;
 }
-/*******          Commande        ********/
+
 #commande{
     background-color: rgba(198,40,40,0.8);
     padding-bottom: 24px;
@@ -176,4 +176,8 @@
     background-color : rgba(255,255,255,0.8);
     padding: 10px;
     overflow: auto;
+}
+/*******          Connexion        ********/
+.alert{
+    margin-top: 10px;
 }

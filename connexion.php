@@ -38,10 +38,14 @@ if (!empty($_POST)) {
                 $_SESSION['customer']['adresse'] = $customer->getAdresse();
                 $_SESSION['customer']['codePostal'] = $customer->getCodePostal();
                 $_SESSION['customer']['ville'] = $customer->getVille();
+                $_SESSION['customer']['teleprospecteur'] = $customer->getTeleprospecteur();
 
-                Utils::redirect('index.php');
-            }
-        }
+                ($_SESSION['customer']['teleprospecteur'] == '1') ? Utils::redirect('backoffice/index-admin.php') && define('ADMIN_REQUIRE', TRUE) : Utils::redirect('index.php');
+                
+            } else {
+                $controle->add('Mot de passe ou code client invalide', 'invalideUser');
+            };
+        };
     };
 };
 echo $twig->render('connexion.twig',array(

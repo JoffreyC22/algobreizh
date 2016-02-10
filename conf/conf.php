@@ -17,14 +17,10 @@ $ip = $_SERVER['SERVER_ADDR'];
 if( $ip == '127.0.0.1' or 'localhost'){
 
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASSWORD', 'root');
+    define('DB_USER', 'florentp');
+    define('DB_PASSWORD', 's8f7k11f4');
     define('DB_NAME', 'algobreizh');
-<<<<<<< Updated upstream
-    define('PATH', 'http://127.0.0.1/ecole/algobreizh/');
-=======
-    define('PATH', 'http://localhost/algobreizh/');
->>>>>>> Stashed changes
+    define('PATH', 'http://127.0.0.1/Algobreizh/algobreizh/');
 
 }
 else {
@@ -43,5 +39,4 @@ if(isset($_SESSION['customer']['nom']) && !empty($_SESSION['customer']['nom']))
 if (empty($_SESSION['customer']) && !defined('NO_LOGIN_REQUIRE')){
   header('Location: connexion.php');  
   exit();
-} 
-
+}

@@ -38,8 +38,18 @@ class UtilisateursManager {
         return ( $data != false ) ? $utilisateurs : false;
     }
 
-    public static function addUtilisateurs(Utilisateurs $utilisateurs) {
-        try {
+    public static function getUtilisateurByCodeClientAndEmail($codeClient, $email){
+        $pdo = Database::getInstance()->prepare('SELECT * FROM utilisateurs WHERE codeClient=:codeClient AND email=:email');
+        $pdo->bindValue(':codeClient', $codeClient);
+        $pdo->bindValue(':email', $email);
+        $pdo->execute();
+        $data = $pdo->fetch(PDO::FETCH_ASSOC);
+        $newUtilisateurs = new Utilisateurs($data);
+        return ($data != false ) ? $newUtilisateurs : false;
+    }
+
+    public static function addUtilisateurs(Utilisateurs $utilisateurs){
+        try { 
             $pdo = Database::getInstance()->prepare('INSERT INTO  utilisateurs (codeClient,email,nom,prenom,ville,codePostal,adresse,telephone,motDePasse,teleprospecteur ) VALUES (:codeClient,:email,:nom,:prenom,:ville,:codePostal,:adresse,:telephone,:motDePasse,:teleprospecteur)');
             $pdo->bindValue(':codeClient', $utilisateurs->getCodeClient());
             $pdo->bindValue(':email', $utilisateurs->getEmail());
