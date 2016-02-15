@@ -10,12 +10,13 @@ DirectoryIndex index.php
 
 
 # Ajax
+
 RewriteRule ^ajax/([a-zA-Z]{1,})$ ajax.php?ajax=$1 [QSA,L]
 RewriteRule home$ index.php
 RewriteRule panier$ panier.php
 RewriteRule contact$ contact.php
 RewriteRule facture$ facture.php
-RewriteRule detail-(.*)$ detail.php?id=$1
+RewriteRule detail-numero-(.*)$ detail.php?id=$1 [L]
 RewriteRule commande$ commande.php
 RewriteRule connexion$ connexion.php
 RewriteRule produit$ produit.php

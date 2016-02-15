@@ -2,8 +2,11 @@
 define('NO_LOGIN_REQUIRE', TRUE);
 require 'conf/conf.php';
 
-if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'logOut')
+if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'logOut'){
+    
     $_SESSION = array();
+    Utils::redirect('connexion');
+}
 
 if (!empty($_SESSION['customer']['utilisateur']) && !empty($_SESSION['customer']['motDePasse']))
     Utils::redirect('home');
