@@ -6,7 +6,7 @@ if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'log
     $_SESSION = array();
 
 if (!empty($_SESSION['customer']['utilisateur']) && !empty($_SESSION['customer']['motDePasse']))
-    Utils::redirect('index.php');
+    Utils::redirect('home');
 
 if (!empty($_POST)) {
     if(isset($_POST['submit'])){
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
                 $_SESSION['customer']['ville'] = $customer->getVille();
                 $_SESSION['customer']['teleprospecteur'] = $customer->getTeleprospecteur();
 
-                ($_SESSION['customer']['teleprospecteur'] == '1') ? Utils::redirect('backoffice/index-admin.php') && define('ADMIN_REQUIRE', TRUE) : Utils::redirect('index.php');
+                ($_SESSION['customer']['teleprospecteur'] == '1') ? Utils::redirect('backoffice/index-admin.php') && define('ADMIN_REQUIRE', TRUE) : Utils::redirect('home');
                 
             } else {
                 $controle->add('Mot de passe ou code client invalide', 'invalideUser');

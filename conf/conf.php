@@ -17,10 +17,10 @@ $ip = $_SERVER['SERVER_ADDR'];
 if( $ip == '127.0.0.1' or 'localhost'){
 
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'florentp');
-    define('DB_PASSWORD', 's8f7k11f4');
+    define('DB_USER', 'root');
+    define('DB_PASSWORD', '');
     define('DB_NAME', 'algobreizh');
-    define('PATH', 'http://127.0.0.1/Algobreizh/algobreizh/');
+    define('PATH', 'http://127.0.0.1/ecole/algobreizh/');
 
 }
 else {

@@ -36,13 +36,13 @@ if($action){
             if(isset($_GET['ref']) && !empty($_GET['ref']))
                 $panier->removeItem($_GET['ref']);
             
-            Utils::redirect('panier.php');
+            Utils::redirect('panier');
         break;
         case 'deleteCart' :
             
             $panier->removeCart();
             
-            Utils::redirect('panier.php');
+            Utils::redirect('panier');
         break;
         case 'confirmCart' : 
             $dateCommande = date('Y-m-d H:i:s'); 
@@ -68,7 +68,7 @@ if($action){
             }
 
             $_SESSION['cart'] = array();
-            Utils::redirect('panier.php');
+            Utils::redirect('panier');
             break;
     };
 };

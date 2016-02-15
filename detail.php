@@ -3,7 +3,7 @@
 require 'conf/conf.php';
 
 if (empty($_GET['id']) && !isset($_GET['id'])) {
-    Utils::redirect('index.php');
+    Utils::redirect('home');
 } else {
 	$detail = DetailsManager::getDetailsByIdCommande($_GET['id']);
 	
