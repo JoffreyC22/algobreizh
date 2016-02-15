@@ -31,7 +31,7 @@ class UtilisateursManager {
     public static function getUtilisateurByCodeClientAndPassword($codeClient, $motDePasse) {
         $pdo = Database::getInstance()->prepare('SELECT * FROM utilisateurs WHERE codeClient=:codeClient AND motDePasse=:motDePasse');
         $pdo->bindValue(':codeClient', $codeClient);
-        $pdo->bindValue(':motDePasse', $motDePasse);
+        $pdo->bindValue(':motDePasse', sha1($motDePasse));
         $pdo->execute();
         $data = $pdo->fetch(PDO::FETCH_ASSOC);
         $utilisateurs = new Utilisateurs($data);
