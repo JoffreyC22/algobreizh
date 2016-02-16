@@ -10,7 +10,11 @@
                 <div class=" no-print col-lg-6 col-md-4 col-sm-4 col-xs-7">
                     <ol class="breadcrumb">
                         <li><a href="index-admin.php">Acceuil</a></li>
-                        <li><a href="en-cours-admin.php">En Cours</a></li>
+                        {% if commandes.getValide == 1 %}
+                        <li><a href="valide-admin.php">Commandes validées</a></li>
+                        {% else %}
+                        <li><a href="en-cours-admin.php">Commandes en cours</a></li>
+                        {% endif %}
                         <li class="active">Détail de commande</li>
                     </ol>
                 </div>

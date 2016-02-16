@@ -10,24 +10,24 @@ $itemsPanier = array();
 
 if(!empty($items)){
 
-foreach($items['ref'] as $key => $item){
-    $article = ArticlesManager::getAllArticlesByCodeArticle($items['ref'][$key]);
-    $array = array(
-        "code" => $items['ref'][$key],
-        "libelle" => $article->getLibelleArticle(),
-        "prix" => $article->getPrix(),
-        "tva" => $article->getTVA(),
-        "image" => $article->getImage(),
-        "qte" => $items['qte'][$key],
+    foreach($items['ref'] as $key => $item){
+        $article = ArticlesManager::getAllArticlesByCodeArticle($items['ref'][$key]);
+        $array = array(
+            "code" => $items['ref'][$key],
+            "libelle" => $article->getLibelleArticle(),
+            "prix" => $article->getPrix(),
+            "tva" => $article->getTVA(),
+            "image" => $article->getImage(),
+            "qte" => $items['qte'][$key],
             );
-            array_push($itemsPanier, $array);
-};
+        array_push($itemsPanier, $array);
+    };
 }
 /// TRAITEMENT PANIER  
 $montantTTC = 0;
 foreach($itemsPanier as $itemPanier)
     $montantTTC += round($itemPanier['prix'] * $itemPanier['qte'] * (1+$itemPanier['tva'] / 100 ),2);
-             
+
 $action = !empty($_REQUEST['action']) ? $_REQUEST['action'] : null;
 if($action){
     switch($action){
@@ -45,27 +45,27 @@ if($action){
             Utils::redirect('panier');
         break;
         case 'confirmCart' : 
-            $dateCommande = date('Y-m-d H:i:s'); 
-            
-            $commande = new Commandes();
-            $commande->setCodeClient($_SESSION['customer']['codeClient']);
-            $commande->setDateCommande($dateCommande);
-            $commande->setValide("0");
-            $commande->setMontant($montantTTC);
-            $commande->setIdUtilisateur($_SESSION['customer']['idClient']);
-            
-            CommandesManager::addCommandes($commande);
-            
-            foreach($itemsPanier as $itemPanier){
-                $detail = new Details();
-                $detail->setCodeArticle($itemPanier['code']);
-                $detail->setLibelleArticle($itemPanier['libelle']);
-                $detail->setQteArticle($itemPanier['qte']);
-                $detail->setMontant($itemPanier['prix'] * $itemPanier['qte'] );
-                $detail->setIdCommande($commande->getIdCommande());
+        $dateCommande = date('Y-m-d H:i:s'); 
+        
+        $commande = new Commandes();
+        $commande->setCodeClient($_SESSION['customer']['codeClient']);
+        $commande->setDateCommande($dateCommande);
+        $commande->setValide("0");
+        $commande->setMontant($montantTTC);
+        $commande->setIdUtilisateur($_SESSION['customer']['idClient']);
+        
+        CommandesManager::addCommandes($commande);
+        
+        foreach($itemsPanier as $itemPanier){
+            $detail = new Details();
+            $detail->setCodeArticle($itemPanier['code']);
+            $detail->setLibelleArticle($itemPanier['libelle']);
+            $detail->setQteArticle($itemPanier['qte']);
+            $detail->setMontant($itemPanier['prix'] * $itemPanier['qte'] );
+            $detail->setIdCommande($commande->getIdCommande());
 
-                DetailsManager::addDetails($detail);
-            }
+            DetailsManager::addDetails($detail);
+        }
 
             $_SESSION['cart'] = array();
             Utils::redirect('panier');
@@ -76,4 +76,4 @@ echo $twig->render('panier.twig',array(
     'PAGE' => $_PAGE,
     'itemsPanier' => $itemsPanier,
     'montantTTC' => $montantTTC
-   ));
+    ));

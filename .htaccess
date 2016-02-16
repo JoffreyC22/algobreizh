@@ -6,13 +6,14 @@ DirectoryIndex index.php
 #RewriteCond %{HTTP_HOST} !^www\.
 #RewriteRule ^(.*)$ http://www.realenergy.fr/$1 [R=301,L]
 #
-#ErrorDocument 404 http://realenergy.hndigital.fr/
+ErrorDocument 404 http://127.0.0.1/algobreizh/algobreizh/404
 
 
 # Ajax
 
 RewriteRule ^ajax/([a-zA-Z]{1,})$ ajax.php?ajax=$1 [QSA,L]
 RewriteRule home$ index.php
+RewriteRule 404$ 404.php
 RewriteRule panier$ panier.php
 RewriteRule contact$ contact.php
 RewriteRule facture$ facture.php

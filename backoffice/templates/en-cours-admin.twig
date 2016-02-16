@@ -7,7 +7,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
                     <ol class="breadcrumb">
                         <li><a href="index-admin.php">Acceuil</a></li>
-                        <li class="active">En Cours</li>
+                        <li class="active">En cours</li>
                     </ol>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-5 text-right">
@@ -34,7 +34,7 @@
                                         <tr>
                                             <td>{{ commande.getCodeClient}}</td>
                                             <td>{{ commande.getDateCommande}}</td>
-                                            <td><a href="en-cours-admin.php?id={{ commande.getIdCommande }}" class="btn btn-info">Validée</a></td>
+                                            <td><a href="en-cours-admin.php?id={{ commande.getIdCommande }}" class="btn btn-info">Valider</a></td>
                                             <td><a href="en-cours-admin.php?detail={{ commande.getIdCommande }}" class="btn btn-warning">Détails</a></td>
                                             <td>{{ commande.getMontant}} € <br /></td>
                                         </tr>

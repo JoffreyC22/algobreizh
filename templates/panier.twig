@@ -19,7 +19,7 @@
                 <div class='clear'>
                 {% if itemsPanier is empty %}
                     <div class='col-lg-12'>
-                        <p class='text-center panier-vide' >Votre Panier est vide pour le moment nous vous invitant à alller commander dans la page <a href='produit.php'>produits</a></p>
+                        <p class='text-center panier-vide' >Votre panier est vide pour le moment, nous vous invitons à commander en allant à la page <a href='produit'>produits</a></p>
                     </div>
                 {% else %}
                     <div class="row">
@@ -37,7 +37,7 @@
                                         <p class="article-prix"><strong> Prix unité :</strong> {{ itemPanier.prix }} €</p>
                                         <p class="article-tva"><strong> TVA  : </strong> {{ itemPanier.tva }} % </p>
                                         <p class="article-prix-total"><strong>Prix total : </strong> {{ itemPanier.prix * itemPanier.qte }} € HT</p>
-                                        <a href="panier.php?action=deleteArticle&ref={{ itemPanier.code }}" class="btn-sm btn btn-warning">Supprimer Article</a>
+                                        <a href="panier.php?action=deleteArticle&ref={{ itemPanier.code }}" class="btn-sm btn btn-warning">Supprimer article</a>
 
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                         {% endfor %}
                     </div>
                     <div class="panier-confirm col-lg-12">
-                        <a href="panier.php?action=deleteCart" class=" btn-md btn btn-danger col-lg-3">Annuler La commande</a>
+                        <a href="panier.php?action=deleteCart" class=" btn-md btn btn-danger col-lg-3">Annuler la commande</a>
                         <div>
                             <p class='col-lg-3 col-lg-offset-3 article-prix-total'><strong>Total : </strong>{{ montantTTC }} € TTC</p>
                         </div>

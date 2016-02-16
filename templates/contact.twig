@@ -1,28 +1,101 @@
 {% extends "layout.twig" %}
 {% block content %}
-    <div class="container">
-        <div class="col-lg-12">
-            <div id="contact-content" class="" >
-                <h1 class="text-center" >CONTACT</h1>
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
-                    <ol class="breadcrumb">
-                        <li><a href="home">Acceuil</a></li>
-                        <li class="active">Contact</li>
-                    </ol>
-                </div>
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-5 text-right">
-                    <a title="retour" href="home"><img class="arrow" src="assets/img/back57.png"></a>
-                </div>
-                <div class="col-lg-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">Contact</h3>
-                        </div><!-- /.box-header -->
-                        <div class="box-body">
-                            <p>Pour nous contacter, veuillez appeler au <i>02 11 44 55 66</i> ou envoyer un mail à l'adresse suivante : <i>contact@algobreizh.com</i></p>   
-                        </div><!-- /.box-body -->
-                    </div>
-                </div>
+<div class="container">
+    <div class="col-lg-12">
+        <div id="contact-content" class="" >
+            <h1 class="text-center" >CONTACT</h1>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-7">
+                <ol class="breadcrumb">
+                    <li><a href="home">Acceuil</a></li>
+                    <li class="active">Contact</li>
+                </ol>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-5 text-right">
+                <a title="retour" href="home"><img class="arrow" src="assets/img/back57.png"></a>
+            </div>
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Contact</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <p>Pour nous contacter, veuillez appeler au <i>02 11 44 55 66</i> ou envoyer un mail à l'adresse suivante : <i>contact@algobreizh.com</i></p>
+                        <hr>
+                        <div class="col-md-8 col-md-offset-2">
+                            <form action="" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                     <div class="form-group">
+                                        <label for="email">Adresse e-mail</label>
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Votre e-mail..." 
+                                        value="{{ USER_EMAIL }}">
+                                        {% if controle.get('email') != null and not errors.isEmpty() %}<span class="col-lg-12 alert alert-danger">{{(controle.get('email')) ? controle.get('email')  : '' }}</span>{%endif %}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Nom</label>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Votre nom..."
+                                        value="{{ USER_NAME }}">
+                                        {% if controle.get('name') != null and not errors.isEmpty() %}<span class="col-lg-12 alert alert-danger">{{(controle.get('name')) ? controle.get('name')  : '' }}</span>{%endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" name="message" rows="3" id="message"></textarea>
+                                {% if controle.get('message') != null and not errors.isEmpty() %}<span class="col-lg-12 alert alert-danger">{{(controle.get('message')) ? controle.get('message')  : '' }}</span>{%endif %}
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-1 btn-1a">Envoyer</button>
+                        </form>
+
+                    </div> 
+                </div><!-- /.box-body -->
             </div>
         </div>
-    {% endblock %}
+    </div>
+</div>
+{% if send == 'send' %}
+<script> $(document).ready(function () {
+    $('#send-modal').modal()
+})
+</script>
+<div id="send-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>Le message a bien été envoyé ! </p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+{% elseif send == false %}
+<script> $(document).ready(function () {
+    $('#fail-modal').modal()
+})
+</script>
+<div id="fail-modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <p>Le message n'a pas pu être envoyé ! </p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+{% endif %}
+
+
+{% endblock %}

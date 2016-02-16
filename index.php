@@ -14,3 +14,4 @@ echo $twig->render('index.twig', array(
     'nbArticles' => $nbArticles,
     'PAGE' => $_PAGE
 ));
+

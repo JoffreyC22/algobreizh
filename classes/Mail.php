@@ -27,4 +27,28 @@
 
 			return mail($emailAdresse, $subject, $content, $headers);
 		}
+
+		public static function Contact($customer){
+			$emailAdresse = 'joffrey.capitaine@gmail.com';
+			$emailCustomer = $customer->getEmail();
+			$subject = 'Contact - Algobreizh';
+			$message = $_POST['message'];
+
+			if (strtoupper(substr(PHP_OS,0,3)=='WIN')) { 
+			  $eol="\r\n"; 
+			} elseif (strtoupper(substr(PHP_OS,0,3)=='MAC')) { 
+			  $eol="\r"; 
+			} else { 
+			  $eol="\n"; 
+			};
+
+			$headers = 'From: '.$emailCustomer .$eol; 
+			$mime_boundary=md5(time()); 
+			$headers .= 'MIME-Version: 1.0'.$eol; 
+			$headers .= "Content-Type: multipart/related; boundary=\"".$mime_boundary."\"".$eol;
+
+			$message;
+
+			return mail($emailAdresse, $subject, $message, $headers);
+		}
 	};

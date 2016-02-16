@@ -22,4 +22,7 @@ switch(PAGE){
     case 'INFORMATIONS':
         $_PAGE = new Page('INFORMATIONS', ' - Informations');
         break;
+    case '404' : 
+        $_PAGE = new Page('404', ' - Erreur 404' );
+        break;
 }
