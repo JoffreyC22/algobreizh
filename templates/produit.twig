@@ -18,7 +18,19 @@
                         <div class="box-header">
                             <h3 class="box-title">Differents produits</h3>
                             <p>Chaque fois que vous selectionner un produit vous devez cliquer sur le button jeune</p>
+                            <p>Selectionnez votre famille :</p>
                         </div><!-- /.box-header -->
+                        <div>
+                            <form method="post" action="">
+                                <select name="filter" class='change-famille btn dropdown-toggle selectpicker btn-warning' onchange="this.form.submit();">
+                                    <option></option>
+                                    <option value="all" {{(POST.filter == 'all' ) ? 'selected' : ''}} >Tous les produits</option>
+                                    {% for famille in familles %}
+                                    <option  value="{{ famille.getIdFamille() }}"{{ (POST.filter == famille.getIdFamille() ) ? 'selected' : ''}}>{{ famille.getLibelleFamille() }}</option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                        </div>
                         <div class="box-body">
                             <table id="datatable" class="table table-bordered table-striped">
                                 <thead>
@@ -46,7 +58,7 @@
                                                     <input class="form-control" type="hidden" name="code-produit" value="{{ article.getCodeArticle }}" />
                                                     <div class="col-lg-6">
                                                         <input class=" form-control"  type="number" name="nb-produit" style="width:75px" min='1'/>
-                                                     </div>
+                                                    </div>
                                                     <div class="col-lg-6">
                                                         <button type="submit" class="button--moema button--inverted"><img title="ajouter au panier " class="btn-image" src="assets/img/shopping-small.png"> </button>
                                                     </div>
@@ -54,7 +66,7 @@
                                             </td>
                                     <script>
                                         $(document).ready(function () {
-                                                      
+
                                             $('#form-add-panier-{{ article.getCodeArticle}}').on('submit', function (e) {
                                                 e.preventDefault();
 
@@ -68,7 +80,7 @@
 
                                                             if (val === "success")
                                                                 $('#panier-modal').modal();
-                                                                
+
                                                         });
                                                     }
                                                 });
@@ -96,22 +108,22 @@
                 </div>
             </div>
         </div>
-            <div id="panier-modal" class="modal fade" tabindex="-1" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Ajoute Panier</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>L'article a bien été ajouter au panier ! </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Continuer vos achats</button>
-                            <a href="panier" type="button" class="btn btn-primary">Voir le panier</a>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div>
+        <div id="panier-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Ajoute Panier</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>L'article a bien été ajouter au panier ! </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Continuer vos achats</button>
+                        <a href="panier" type="button" class="btn btn-primary">Voir le panier</a>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
 
     {% endblock %}

@@ -17,6 +17,15 @@ class ArticlesManager {
         $articles = new Articles($data);
         return ($data != false ) ? $articles : false;
     }
+    public static function getArticlesByIdFamille($id){
+        $pdo = Database::getInstance()->prepare('SELECT * FROM articles WHERE idFamille=:idFamille');
+        $pdo->bindValue(':idFamille',$id);
+        $pdo->execute();
+        while($datas = $pdo->fetch(PDO::FETCH_ASSOC)){
+             $articles[] = new Articles($datas);
+        }
+        return (isset($articles)) ? $articles : null ;
+    }
 
     public static function getAllArticlesByCodeArticle($codeArticle){
         $pdo = Database::getInstance()->prepare('SELECT * FROM articles WHERE codeArticle=:codeArticle');
