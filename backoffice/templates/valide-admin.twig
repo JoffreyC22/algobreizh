@@ -35,7 +35,7 @@
                                             <td>{{ commande.getCodeClient}}</td>
                                             <td>{{ commande.getDateCommande}}</td>
                                             <td>Est validée</td>
-                                            <td><a href="en-cours-admin.php?detail={{ commande.getIdCommande }}" class="btn btn-warning">Détails</a></td>
+                                            <td><a href="detail-admin.php?id={{ commande.getIdCommande }}" class="btn btn-warning">Détails</a></td>
                                             <td>{{ commande.getMontant}} € <br /></td>
                                         </tr>
                                     {% endfor %}
@@ -49,6 +49,7 @@
                                     </tr>
                                 </tfoot>
                             </table>
+                                
                         </div><!-- /.box-body -->
                     </div>
                 </div>
